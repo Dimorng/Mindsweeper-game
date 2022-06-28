@@ -59,10 +59,16 @@ function endGame() {
   })
 
   board.forEach(row => {
-    row.forEach(c => (c.cardElement.style.cursor = "not-allowed"))
+    row.forEach(({ cardElement }) => changeCursor("not-allowed", cardElement))
   })
 
+  changeCursor("not-allowed", boardElement)
+
   boardElement.style.opacity = "30%"
+}
+
+function changeCursor(cursorType, DomNode) {
+  DomNode.style.cursor = cursorType
 }
 
 function stopPropagation(e) {
